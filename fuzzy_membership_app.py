@@ -66,6 +66,36 @@ def main():
                 yaxis_range=[0, 1.1]
             )
             st.plotly_chart(fig)
+        st.markdown(r"""### Explanation of the Triangular Membership Function
+
+The **Triangular Membership Function** is a type of fuzzy logic function used to represent the degree of membership of a value $ x $ within a fuzzy set. This function is defined by three parameters: $ a $, $ b $, and $ c $. Here's a breakdown of its components:
+
+#### Parameters:
+- **$ a $**: The lower limit of the triangular function.
+- **$ b $**: The peak (maximum) point of the triangle, where the membership degree is 1.
+- **$ c $**: The upper limit of the triangular function.
+
+#### Function Behavior:
+1. **For** $ x \leq a $:
+   - The membership degree $ \mu(x) = 0 $. This means that values less than or equal to $ a $ do not belong to the fuzzy set.
+
+2. **For $ a < x \leq b $**:
+   - The membership degree increases linearly from 0 to 1. It is calculated as:
+     $$
+     \mu(x) = \frac{x - a}{b - a}
+     $$
+   - As $ x $ approaches $ b $, $ \mu(x) $ approaches 1, indicating full membership.
+
+3. **For $ b < x \leq c $**:
+   - The membership degree decreases linearly from 1 to 0. It is calculated as:
+     $$
+     \mu(x) = \frac{c - x}{c - b}
+     $$
+   - As $ x $ approaches $ c $, $ \mu(x) $ approaches 0, indicating no membership.
+
+4. **For $ x > c $**:
+   - The membership degree $ \mu(x) = 0 $. Values greater than $ c $ do not belong to the fuzzy set.
+        """)
     
     with tab2:
         st.header("Gaussian Membership Function")
@@ -87,6 +117,30 @@ def main():
             yaxis_range=[0, 1.1]
         )
         st.plotly_chart(fig)
+        st.markdown(r"""### Explanation of the Gaussian Membership Function
+The **Gaussian Membership Function** is a commonly used function in fuzzy logic and statistics to represent the degree of membership of a value $ x $ within a fuzzy set. It is characterized by a bell-shaped curve and is defined by two parameters: the mean and the standard deviation.
+
+#### Parameters:
+- **Mean ($ \text{mean} $)**: The center of the Gaussian curve, indicating the point of maximum membership (where the membership degree is 1).
+- **Standard Deviation ($ \sigma $)**: Determines the width of the curve. A smaller $ \sigma $ results in a steeper curve, while a larger $ \sigma $ creates a flatter curve.
+
+#### Function Behavior:
+1. **At the Mean**:
+   - When $ x $ is equal to the mean, the membership degree is at its maximum:
+     $$
+     \mu(\text{mean}) = e^{0} = 1
+     $$
+
+2. **As $ x $ Moves Away from the Mean**:
+   - The membership degree decreases exponentially as $ x $ moves away from the mean. This is governed by the equation:
+     $$
+     \mu(x) = e^{-\frac{(x - \text{mean})^2}{2\sigma^2}}
+     $$
+   - As $ |x - \text{mean}| $ increases, $ \mu(x) $ approaches 0, indicating lower membership.
+
+3. **Shape of the Curve**:
+   - The Gaussian function produces a symmetric bell-shaped curve. The area under the curve represents the total membership, which integrates to 1 over the entire range.
+                    """)
     
     with tab3:
         st.header("Trapezoidal Membership Function")
@@ -117,6 +171,43 @@ def main():
                 yaxis_range=[0, 1.1]
             )
             st.plotly_chart(fig)
+            st.markdown(r"""### Explanation of the Trapezoidal Membership Function
+
+The **Trapezoidal Membership Function** is a type of fuzzy membership function that is used to represent the degree of membership of a value $ x $ within a fuzzy set. It is particularly useful in situations where the membership grades need to be defined over an interval, allowing for a flat top section. 
+
+#### Parameters:
+- **$ a $**: The lower limit where the membership starts increasing.
+- **$ b $**: The point where the membership reaches its maximum (1).
+- **$ c $**: The point where the membership remains at its maximum (1) until it starts to decrease.
+- **$ d $**: The upper limit where the membership starts decreasing to 0.
+
+#### Function Behavior:
+1. **For $ x \leq a $**:
+   - The membership degree is $ \mu(x) = 0 $. Values less than or equal to $ a $ do not belong to the fuzzy set.
+
+2. **For $ a < x \leq b $**:
+   - The membership degree increases linearly from 0 to 1:
+     $$
+     \mu(x) = \frac{x - a}{b - a}
+     $$
+   - As $ x $ approaches $ b $, the membership degree reaches its maximum of 1.
+
+3. **For $ b < x \leq c $**:
+   - The membership degree remains constant at 1, indicating full membership in the fuzzy set.
+
+4. **For $ c < x \leq d $**:
+   - The membership degree decreases linearly from 1 to 0:
+     $$
+     \mu(x) = \frac{d - x}{d - c}
+     $$
+   - As $ x $ approaches $ d $, the membership degree approaches 0.
+
+5. **For $ x > d $**:
+   - The membership degree is $ \mu(x) = 0 $. Values greater than $ d $ do not belong to the fuzzy set.
+
+### Visual Representation
+The trapezoidal shape allows for a clear representation of the membership function, with a flat top that indicates a range of values that fully belong to the fuzzy set.
+""")
     
     with tab4:
         st.header("Generalized Bell Membership Function")
@@ -139,6 +230,23 @@ def main():
             yaxis_range=[0, 1.1]
         )
         st.plotly_chart(fig)
+        st.markdown(r"""### Explanation of the Generalized Bell Membership Function
+        
+The Generalized Bell Membership Function is a type of fuzzy membership function used in fuzzy logic systems to define the degree of membership of a value $x$ within a fuzzy set. This function is characterized by its bell-shaped curve, which can be adjusted to fit various applications.
+$$
+\mu(x) = \frac{1}{1 + \left|\frac{x - c}{a}\right|^{2b}}
+$$
+The equation consists of three parameters: $a$, $b$, and $c$. Here's a breakdown of its components:
+
+Where:
+
+- **$\mu(x)$**: The degree of membership of the input value $x$ in the fuzzy set.
+- **$c$**: The center of the bell-shaped curve, which represents the point of maximum membership (typically 1).
+- **$a$**: The scale parameter that affects the width of the bell curve. A larger $a$ value results in a wider curve.
+- **$b$**: The shape parameter that controls the sharpness of the curve. A higher $b$ value leads to a steeper decline in membership degree.
+
+The Generalized Bell Membership Function is a versatile tool in fuzzy logic, as it allows for flexible modeling of fuzzy sets by adjusting the $a$ and $b$ parameters. This function is commonly used in various applications, such as artificial intelligence, control systems, and decision-making processes, where the representation of gradual membership is important.
+                    """)
     
     with tab5:
         st.header("Sigmoidal Membership Function")
@@ -160,6 +268,30 @@ def main():
             yaxis_range=[0, 1.1]
         )
         st.plotly_chart(fig)
+        st.markdown(r"""### Explanation of the Sigmoidal Membership Function
+The Sigmoidal Membership Function is another type of fuzzy membership function used in fuzzy logic systems. It is characterized by a smooth, S-shaped curve that represents the degree of membership of an input value x within a fuzzy set.
+
+The key aspects of the Sigmoidal Membership Function are:
+
+1. **Equation**:
+   The mathematical expression for the Sigmoidal Membership Function is:
+   $$
+   \mu(x) = \frac{1}{1 + e^{-a(x - c)}}
+   $$
+
+2. **Parameters**:
+   - **$c$**: This parameter represents the center or inflection point of the sigmoidal curve, where the membership degree is 0.5.
+   - **$a$**: This parameter controls the steepness of the curve. A larger value of $a$ results in a sharper transition between low and high membership degrees, while a smaller value of $a$ leads to a more gradual transition.
+
+The Sigmoidal Membership Function is often used in situations where a gradual transition between membership and non-membership is desired. It is particularly useful in applications where the input values can be categorized into two distinct groups, such as "low" and "high", with a smooth transition between them.
+
+Some key properties of the Sigmoidal Membership Function:
+
+- The function is bounded between 0 and 1, representing the range of possible membership degrees.
+- The curve is monotonically increasing, meaning it steadily rises from 0 to 1 as the input value x increases.
+- The inflection point at $x = c$ represents the point where the membership degree is 0.5, serving as the decision boundary between membership and non-membership.
+- The steepness of the curve, controlled by the $a$ parameter, determines how quickly the membership degree transitions from 0 to 1 around the inflection point.
+                    """)
 
 if __name__ == "__main__":
     main()
